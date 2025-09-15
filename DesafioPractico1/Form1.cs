@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DesafioPractico1
 {
@@ -112,15 +113,73 @@ namespace DesafioPractico1
             dgvPrestamo.DataSource = null;
             dgvPrestamo.DataSource = new List<Prestamo>(prestamos.Values);
 
+            ActualizarGraficos();
+
             MessageBox.Show("Préstamo registrado con éxito.");
         }
 
+        private void ActualizarGraficos()
+        {
+            // ----- LIBROS MÁS PRESTADOS -----
+            chartLibros.Series.Clear();
+            chartLibros.ChartAreas.Clear();
+            ChartArea areaLibros = new ChartArea();
+            chartLibros.ChartAreas.Add(areaLibros);
+
+            Series serieLibros = new Series("Libros Más Prestados");
+            serieLibros.ChartType = SeriesChartType.Column;
+
+            var librosMasPrestados = prestamos.Values
+                .GroupBy(p => p.Libro.Titulo)
+                .Select(g => new { Titulo = g.Key, Cantidad = g.Count() });
+
+            if (librosMasPrestados.Any())
+            {
+                foreach (var item in librosMasPrestados)
+                {
+                    serieLibros.Points.AddXY(item.Titulo, item.Cantidad);
+                }
+            }
+            else
+            {
+                serieLibros.Points.AddXY("Sin datos", 0);
+            }
+
+            chartLibros.Series.Add(serieLibros);
+
+            // ----- USUARIOS MÁS ACTIVOS -----
+            chartUsuarios.Series.Clear();
+            chartUsuarios.ChartAreas.Clear();
+            ChartArea areaUsuarios = new ChartArea();
+            chartUsuarios.ChartAreas.Add(areaUsuarios);
+
+            Series serieUsuarios = new Series("Usuarios Más Activos");
+            serieUsuarios.ChartType = SeriesChartType.Column;
+
+            var usuariosMasActivos = prestamos.Values
+                .GroupBy(p => p.Usuario.Nombre)
+                .Select(g => new { Usuario = g.Key, Cantidad = g.Count() });
+
+            if (usuariosMasActivos.Any())
+            {
+                foreach (var item in usuariosMasActivos)
+                {
+                    serieUsuarios.Points.AddXY(item.Usuario, item.Cantidad);
+                }
+            }
+            else
+            {
+                serieUsuarios.Points.AddXY("Sin datos", 0);
+            }
+
+            chartUsuarios.Series.Add(serieUsuarios);
+        }
 
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            ActualizarGraficos();
         }
 
         private void dgvLibros_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -164,6 +223,16 @@ namespace DesafioPractico1
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartLibros_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartUsuarios_Click(object sender, EventArgs e)
         {
 
         }

@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.txtTituloLibro = new System.Windows.Forms.TextBox();
             this.txtAutorLibro = new System.Windows.Forms.TextBox();
             this.txtAnioLibro = new System.Windows.Forms.TextBox();
@@ -52,6 +58,8 @@
             this.btnAgregarPrestamo = new System.Windows.Forms.Button();
             this.cmbLibros = new System.Windows.Forms.ComboBox();
             this.cmbUsuarios = new System.Windows.Forms.ComboBox();
+            this.chartUsuarios = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartLibros = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.Libros.SuspendLayout();
@@ -59,6 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.Prestamos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartLibros)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTituloLibro
@@ -122,7 +132,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(585, 586);
+            this.tabControl1.Size = new System.Drawing.Size(597, 586);
             this.tabControl1.TabIndex = 6;
             // 
             // Libros
@@ -141,7 +151,7 @@
             this.Libros.Location = new System.Drawing.Point(4, 22);
             this.Libros.Name = "Libros";
             this.Libros.Padding = new System.Windows.Forms.Padding(3);
-            this.Libros.Size = new System.Drawing.Size(577, 560);
+            this.Libros.Size = new System.Drawing.Size(589, 560);
             this.Libros.TabIndex = 0;
             this.Libros.Text = "Libros";
             // 
@@ -198,7 +208,7 @@
             this.Usuarios.Location = new System.Drawing.Point(4, 22);
             this.Usuarios.Name = "Usuarios";
             this.Usuarios.Padding = new System.Windows.Forms.Padding(3);
-            this.Usuarios.Size = new System.Drawing.Size(577, 560);
+            this.Usuarios.Size = new System.Drawing.Size(589, 560);
             this.Usuarios.TabIndex = 1;
             this.Usuarios.Text = "Usuarios";
             this.Usuarios.UseVisualStyleBackColor = true;
@@ -230,9 +240,9 @@
             // dgvUsuarios
             // 
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(38, 312);
+            this.dgvUsuarios.Location = new System.Drawing.Point(13, 295);
             this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.Size = new System.Drawing.Size(476, 215);
+            this.dgvUsuarios.Size = new System.Drawing.Size(555, 232);
             this.dgvUsuarios.TabIndex = 8;
             // 
             // btnAgregarUsuario
@@ -264,7 +274,7 @@
             this.Prestamos.Location = new System.Drawing.Point(4, 22);
             this.Prestamos.Name = "Prestamos";
             this.Prestamos.Padding = new System.Windows.Forms.Padding(3);
-            this.Prestamos.Size = new System.Drawing.Size(577, 560);
+            this.Prestamos.Size = new System.Drawing.Size(589, 560);
             this.Prestamos.TabIndex = 2;
             this.Prestamos.Text = "Prestamos";
             this.Prestamos.UseVisualStyleBackColor = true;
@@ -272,10 +282,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(15, 98);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 20);
+            this.label7.Size = new System.Drawing.Size(49, 20);
             this.label7.TabIndex = 5;
             this.label7.Text = "Libro";
             this.label7.Click += new System.EventHandler(this.label7_Click);
@@ -283,10 +293,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(15, 14);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 20);
+            this.label6.Size = new System.Drawing.Size(71, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "Usuario";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -294,9 +304,9 @@
             // dgvPrestamo
             // 
             this.dgvPrestamo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrestamo.Location = new System.Drawing.Point(19, 216);
+            this.dgvPrestamo.Location = new System.Drawing.Point(19, 259);
             this.dgvPrestamo.Name = "dgvPrestamo";
-            this.dgvPrestamo.Size = new System.Drawing.Size(545, 298);
+            this.dgvPrestamo.Size = new System.Drawing.Size(536, 292);
             this.dgvPrestamo.TabIndex = 3;
             // 
             // btnAgregarPrestamo
@@ -325,12 +335,48 @@
             this.cmbUsuarios.Size = new System.Drawing.Size(121, 21);
             this.cmbUsuarios.TabIndex = 0;
             // 
+            // chartUsuarios
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chartUsuarios.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartUsuarios.Legends.Add(legend3);
+            this.chartUsuarios.Location = new System.Drawing.Point(606, 372);
+            this.chartUsuarios.Name = "chartUsuarios";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartUsuarios.Series.Add(series3);
+            this.chartUsuarios.Size = new System.Drawing.Size(397, 213);
+            this.chartUsuarios.TabIndex = 7;
+            this.chartUsuarios.Text = "chart1";
+            this.chartUsuarios.Click += new System.EventHandler(this.chartUsuarios_Click);
+            // 
+            // chartLibros
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chartLibros.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartLibros.Legends.Add(legend4);
+            this.chartLibros.Location = new System.Drawing.Point(606, 76);
+            this.chartLibros.Name = "chartLibros";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartLibros.Series.Add(series4);
+            this.chartLibros.Size = new System.Drawing.Size(397, 202);
+            this.chartLibros.TabIndex = 8;
+            this.chartLibros.Text = "chart2";
+            this.chartLibros.Click += new System.EventHandler(this.chartLibros_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 640);
+            this.ClientSize = new System.Drawing.Size(1093, 640);
+            this.Controls.Add(this.chartUsuarios);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.chartLibros);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -344,6 +390,8 @@
             this.Prestamos.ResumeLayout(false);
             this.Prestamos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartLibros)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -377,6 +425,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartUsuarios;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartLibros;
     }
 }
 
