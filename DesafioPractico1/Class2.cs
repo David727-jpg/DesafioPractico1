@@ -12,5 +12,10 @@ namespace DesafioPractico1
         public string Nombre { get; set; }
         public string Correo { get; set; }
         public int LibrosPrestados { get; set; } = 0;
+        public override string ToString()
+        {
+            return Nombre;  // así el DataGridView y ComboBox muestran el nombre
+        }
+
     }
 }

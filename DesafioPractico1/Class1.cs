@@ -26,5 +26,10 @@ namespace DesafioPractico1
         public string Autor { get; set; }
         public int Anio { get; set; }
         public int VecesPrestado { get; set; } = 0;
+        public override string ToString()
+        {
+            return Titulo;  // así muestra el título
+        }
+
     }
 }
